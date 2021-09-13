@@ -49,6 +49,18 @@ const sendNotication = (count) => {
   });
 };
 
+const onPermisssionGranted = () => {
+  window.location.reload();
+};
+
+const onPermisssionDenied = () => {
+  alert("Permission is denied");
+};
+
+const getPermission = () => {
+  Push.Permission.request(onPermisssionGranted, onPermisssionDenied);
+};
+
 const ButtonSector = () => {
   const [count, setCount] = useState(0);
 
@@ -82,7 +94,8 @@ const ButtonSector = () => {
 const NoPermissions = () => {
   return (
     <div>
-      Please allow notifications <br /> <br />
+      <button onClick={getPermission}>Get permission</button>
+      <h3>Please allow notifications</h3>
       <img src={permitScreenshot} alt="" style={{ display: "block" }} />
     </div>
   );
