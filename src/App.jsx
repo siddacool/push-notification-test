@@ -38,6 +38,11 @@ const notifications = [
 const sendNotication = (count) => {
   const { title = "", body = "", icon = "" } = notifications[count];
 
+  // To show notifications if window is not focused
+  // if (document.hasFocus()) {
+  //   return;
+  // }
+
   Push.create(title, {
     body,
     timeout: 6000,
